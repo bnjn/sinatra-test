@@ -28,7 +28,13 @@ RSpec.describe 'Hello Llama App' do
         expect(last_response.body).to eq('<img src=\'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Alpaca_%2831562329701%29.jpg/1920px-Alpaca_%2831562329701%29.jpg\'/>')
     end
 
-    xit 'displays title' do
+    it "displays title and image" do
+        get '/both'
+        expect(last_response).to be_ok
+        expect(last_response.body).to eq('<h1>Hello world</h1>' + "\n" + '<img src=\'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Alpaca_%2831562329701%29.jpg/1920px-Alpaca_%2831562329701%29.jpg\'/>')
+    end
+
+    xit 'displays blog title' do
         get '/blog'
         expect(last_response).to be_ok
         expect(last_response.body). to eq('')
